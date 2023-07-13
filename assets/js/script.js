@@ -11,6 +11,7 @@ $(function () {
     });
 
     const callBtn = document.querySelector("#call-button");
+    const generateBtn = document.querySelector(".btn-to-spin");
     //selecting button
 
     var Url = "https://www.themealdb.com/api/json/v1/1/categories.php?";
@@ -37,14 +38,13 @@ function callRecipeApi() {
             return response.json();
         })
         .then(function (data) {
-            
             const categories = data.categories;
             categories.forEach(function (category) {
+
                 const strCategory = category.strCategory;
-
                 const labelElement = document.createElement("label");
-
                 const categoryElement = document.createElement("input");
+
                 categoryElement.type = "checkbox";
                 categoryElement.value = strCategory;
 
@@ -53,19 +53,31 @@ function callRecipeApi() {
 
                 labelElement.appendChild(categoryElement);
                 labelElement.appendChild(categoryNameElement);
-
                 categoriesElement.appendChild(labelElement);
-                
+
+                document.querySelector(".big-btn").style.display = "none";
             });
+            
         })
         .catch((error) => {
             console.log(error);
         });
-    document.querySelector(".big-btn").style.display = "none";
 }
+
+    function generateMeal() {
+        fetch(Url)
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (data) {
+                console.log(data)
+            })
+        document.querySelector("#categoryDescription").style.display = "none";
+    }
         
     callBtn.addEventListener("click", callRecipeApi);
     callBtn.addEventListener("click", filterCall);
-    
+    generateBtn.addEventListener("click", generateMeal);
+
     //event listener on btn to call recipeapi
 });

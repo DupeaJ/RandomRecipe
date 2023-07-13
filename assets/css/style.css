@@ -98,3 +98,7 @@ label {
     margin-right: 10px;
     margin-bottom: 10px;
 }
+div#categoryDescription{
+    border: solid grey 3px;
+    border-radius: 5px;
+}
