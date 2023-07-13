@@ -60,7 +60,7 @@ function callRecipeApi() {
             console.log(error);
         });
 }
-
+        
     callBtn.addEventListener("click", callRecipeApi);
     callBtn.addEventListener("click", filterCall);
     //event listener on btn to call recipeapi
