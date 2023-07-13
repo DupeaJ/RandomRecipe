@@ -31,31 +31,35 @@ $(function () {
             });
     }
 
-    function callRecipeApi() {
-        fetch(Url)
-            //call api return response as json
-            .then(function (response) {
-                return response.json();
-            })
-            .then(function (data) {
-                const categories = data.categories;
-                //selecting categories tag
-                categories.forEach(function (category) {
-                    //for each category the following will happen for each
-                    const strCategory = category.strCategory;
-                    const categoryElement = document.createElement("p");
-                    //create element
-                    categoryElement.textContent = strCategory;
-                    //set text
-                    categoriesElement.appendChild(categoryElement);
-                    //append to page
-                });
-            })
-            .catch((error) => {
-                console.log(error);
-                //if error console log what the error is
+function callRecipeApi() {
+    fetch(Url)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            const categories = data.categories;
+            categories.forEach(function (category) {
+                const strCategory = category.strCategory;
+
+                const labelElement = document.createElement("label");
+
+                const categoryElement = document.createElement("input");
+                categoryElement.type = "checkbox";
+                categoryElement.value = strCategory;
+
+                const categoryNameElement = document.createElement("span");
+                categoryNameElement.textContent = strCategory;
+
+                labelElement.appendChild(categoryElement);
+                labelElement.appendChild(categoryNameElement);
+
+                categoriesElement.appendChild(labelElement);
             });
-    }
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+}
 
     callBtn.addEventListener("click", callRecipeApi);
     callBtn.addEventListener("click", filterCall);
