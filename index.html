@@ -5,18 +5,40 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>RandomRecipe.com</title>
         <link
+            rel="icon"
+            type="image/x-icon"
+            href="./assets/images/favicon.ico"
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap"
+            rel="stylesheet"
+        />
+        <!-- <link
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
-        />
+        /> -->
         <link rel="stylesheet" href="./assets/css/style.css" />
     </head>
     <body>
-        <header></header>
+        <nav id="navbar">
+            <div id="side-bar">
+                <span id="close-btn">&times;</span>
+                <ul id="past-recipe"></ul>
+            </div>
+            <h1>
+                <span id="hamburger-menu">&#9776;</span>
+                RandomRecipe.com
+            </h1>
+        </nav>
         <main>
             <!-- div for placing api calls -->
-            <div id="categoryDescription"></div> 
+            <div id="categoryDescription"></div>
             <!-- Button to call function -->
-            <button class="big-btn" id="call-button">call category titles</button>
+            <button class="big-btn" id="call-button">
+                call category titles
+            </button>
         </main>
         <footer></footer>
     </body>

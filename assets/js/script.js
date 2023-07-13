@@ -34,3 +34,17 @@ function callRecipeApi() {
 
 CallBtn.addEventListener("click", callRecipeApi);
 //event listener on btn to call recipeapi
+
+$(function () {
+    var hamburgerMenu = $("#hamburger-menu");
+    var closeBtn = $("#close-btn");
+
+    hamburgerMenu.on("click", function () {
+        $("#side-bar").attr("style", "width: 400px;");
+    });
+
+    closeBtn.on("click", function () {
+        console.log("close");
+        $("#side-bar").attr("style", "width: 0px;");
+    });
+});
