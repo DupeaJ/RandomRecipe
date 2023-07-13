@@ -6,6 +6,20 @@ var Url = "https://www.themealdb.com/api/json/v1/1/categories.php?";
 
 const categoriesElement = document.getElementById("categoryDescription");
 
+function FilterCall() {
+    const filterUrl =
+        "https://www.themealdb.com/api/json/v1/1/filter.php?i=chicken_breast";
+    fetch(filterUrl)
+        //call api return response as json
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            console.log(data.meals[0]);
+        });
+}
+
+
 function callRecipeApi() {
     fetch(Url)
         //call api return response as json
