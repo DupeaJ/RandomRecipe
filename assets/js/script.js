@@ -1,4 +1,4 @@
-const CallBtn = document.querySelector("#call-button");
+const callBtn = document.querySelector("#call-button");
 //selecting button
 
 var Url = "https://www.themealdb.com/api/json/v1/1/categories.php?";
@@ -6,7 +6,7 @@ var Url = "https://www.themealdb.com/api/json/v1/1/categories.php?";
 
 const categoriesElement = document.getElementById("categoryDescription");
 
-function FilterCall() {
+function filterCall() {
     const filterUrl =
         "https://www.themealdb.com/api/json/v1/1/filter.php?i=chicken_breast";
     fetch(filterUrl)
@@ -15,10 +15,9 @@ function FilterCall() {
             return response.json();
         })
         .then(function (data) {
-            console.log(data.meals[0]);
+            console.log(data.meals);
         });
 }
-
 
 function callRecipeApi() {
     fetch(Url)
@@ -46,7 +45,8 @@ function callRecipeApi() {
         });
 }
 
-CallBtn.addEventListener("click", callRecipeApi);
+callBtn.addEventListener("click", callRecipeApi);
+callBtn.addEventListener("click", filterCall);
 //event listener on btn to call recipeapi
 
 $(function () {
@@ -58,7 +58,6 @@ $(function () {
     });
 
     closeBtn.on("click", function () {
-        console.log("close");
         $("#side-bar").attr("style", "width: 0px;");
     });
 });

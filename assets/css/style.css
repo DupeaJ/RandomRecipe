@@ -27,7 +27,7 @@ nav {
 }
 
 nav h1 {
-    color: var(--beige);
+    color: var(--papaya-whip);
 }
 
 nav h1 span {
@@ -44,6 +44,10 @@ main {
     font-size: 31px;
     cursor: pointer;
     margin: 10px;
+}
+
+#hamburger-menu:hover {
+    color: var(--papaya-whip);
 }
 
 #side-bar {
