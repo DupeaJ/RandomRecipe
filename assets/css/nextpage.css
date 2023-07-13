@@ -1,3 +1,90 @@
+:root {
+    --tea-green: #ccd5aeff;
+    --beige: #e9edc9ff;
+    --cornsilk: #fefae0ff;
+    --papaya-whip: #faedcdff;
+    --buff: #d4a373ff;
+}
+
+* {
+    font-family: "Quicksand", sans-serif;
+    padding: 0;
+    margin: 0;
+    scroll-behavior: smooth;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+nav {
+    background-color: var(--buff);
+    padding: 10px;
+    position: sticky;
+    top: 0;
+    z-index: 3;
+}
+
+nav h1 {
+    color: var(--papaya-whip);
+}
+
+nav h1 span {
+    color: black;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    padding: 100px;
+}
+
+#hamburger-menu {
+    font-size: 31px;
+    cursor: pointer;
+    margin: 10px;
+}
+
+#hamburger-menu:hover {
+    color: var(--papaya-whip);
+}
+
+#side-bar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #a0a0a0;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+#close-btn {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+/* styling button */
+.big-btn {
+    font-size: 18px;
+    padding: 10px 20px;
+    background-color: #f1f1f1;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
+/* recipe card styling */
 .container {
   position: relative;
   font-family: sans-serif;
@@ -5,7 +92,7 @@
 
 .container::before, .container::after {
   content: "";
-  background-color: #fab5704c;
+  background-color: #ad641b4c;
   position: absolute;
 }
 
@@ -73,6 +160,6 @@
 }
 
 .container .box:hover {
-  box-shadow: 0px 0px 20px 1px #ffbb763f;
+  box-shadow: 0px 0px 20px 1px #ad641b4c;
   border: 1px solid rgba(255, 255, 255, 0.454);
 }
