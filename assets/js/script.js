@@ -37,6 +37,7 @@ function callRecipeApi() {
             return response.json();
         })
         .then(function (data) {
+            
             const categories = data.categories;
             categories.forEach(function (category) {
                 const strCategory = category.strCategory;
@@ -54,14 +55,17 @@ function callRecipeApi() {
                 labelElement.appendChild(categoryNameElement);
 
                 categoriesElement.appendChild(labelElement);
+                
             });
         })
         .catch((error) => {
             console.log(error);
         });
+    document.querySelector(".big-btn").style.display = "none";
 }
         
     callBtn.addEventListener("click", callRecipeApi);
     callBtn.addEventListener("click", filterCall);
+    
     //event listener on btn to call recipeapi
 });
