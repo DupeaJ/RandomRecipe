@@ -10,6 +10,10 @@ $(function () {
         $("#side-bar").attr("style", "width: 0px;");
     });
 
+    $("#title").on("click", function () {
+        location.href = "/";
+    });
+
     const callBtn = document.querySelector("#call-button");
     const generateBtn = document.querySelector(".btn-to-spin");
     //selecting button

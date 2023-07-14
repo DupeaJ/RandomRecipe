@@ -11,6 +11,7 @@
     padding: 0;
     margin: 0;
     scroll-behavior: smooth;
+    cursor: url("../images/pizza.cur"), auto;
 }
 
 body {
@@ -26,7 +27,7 @@ nav {
     z-index: 3;
 }
 
-nav h1 {
+nav #title {
     color: var(--cornsilk);
 }
 
@@ -42,7 +43,6 @@ main {
 
 #hamburger-menu {
     font-size: 40px;
-    cursor: pointer;
     margin: 10px;
 }
 
@@ -152,6 +152,7 @@ div#categoryDescription {
     backdrop-filter: blur(20px);
     border-radius: 0.7rem;
     transition: all ease 0.3s;
+    box-shadow: 0px 0px 20px 1px #ad641b4c;
 }
 
 .container .box {
@@ -189,6 +190,6 @@ div#categoryDescription {
 }
 
 .container .box:hover {
-    box-shadow: 0px 0px 20px 1px #ad641b4c;
+    box-shadow: 0px 0px 20px 1px black;
     border: 1px solid rgba(255, 255, 255, 0.454);
 }
