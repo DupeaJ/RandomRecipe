@@ -44,9 +44,22 @@ $(function () {
                 // display recipe 
                 $(".recipe-title").text(data.meals[i].strMeal);
                 $(".image").attr("src", data.meals[i].strMealThumb);
-                $(".instructions").text(data.meals[i].strMeal);
-
+                
+                // grab full details 
+                const fullDetailsUrl = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=" + data.meals[i].idMeal;
+                fetch(fullDetailsUrl)
+                    .then(function (response) {
+                        return response.json();
+                    })
+                    .then(function (data) {
+                        console.log(data);
+                        console.log(data.meals[0].strInstructions);
+                        $(".instructions").text(data.meals[0].strInstructions);
+                    });
+                
             });
+
+
     }
 
     function callRecipeApi() {
@@ -83,9 +96,6 @@ $(function () {
         fetch(Url)
             .then(function (response) {
                 return response.json();
-            })
-            .then(function (data) {
-                console.log(data);
             });
         document.querySelector("#categoryDescription").style.display = "none";
     }
