@@ -27,12 +27,8 @@ nav {
     z-index: 3;
 }
 
-nav #title {
+nav h1 {
     color: var(--cornsilk);
-}
-
-nav h1 span {
-    color: black;
 }
 
 main {
@@ -46,10 +42,6 @@ main {
     margin: 10px;
 }
 
-#hamburger-menu:hover {
-    color: var(--cornsilk);
-}
-
 #side-bar {
     height: 100%;
     width: 0;
@@ -57,23 +49,19 @@ main {
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: var(--papaya-whip);
+    background-color: var(--cornsilk);
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
 }
 
 #close-btn {
-    cursor: pointer;
+    color: var(--buff);
     position: absolute;
     top: 0;
     right: 25px;
     font-size: 36px;
     margin-left: 50px;
-}
-
-#close-btn:hover {
-    color: var(--buff);
 }
 
 /* styling button */
@@ -84,7 +72,6 @@ main {
     color: #333;
     border: 1px solid #ccc;
     border-radius: 4px;
-    cursor: pointer;
 }
 
 .checkbox-container {

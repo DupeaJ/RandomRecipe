@@ -10,6 +10,10 @@ $(function () {
         $("#side-bar").attr("style", "width: 0px;");
     });
 
+    $("main").on("click", function () {
+        $("#side-bar").attr("style", "width: 0px;");
+    });
+
     $("#title").on("click", function () {
         location.href = "/";
     });
