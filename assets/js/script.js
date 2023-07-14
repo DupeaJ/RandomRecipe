@@ -32,37 +32,35 @@ $(function () {
             });
     }
 
-function callRecipeApi() {
-    fetch(Url)
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (data) {
-            const categories = data.categories;
-            categories.forEach(function (category) {
+    function callRecipeApi() {
+        fetch(Url)
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (data) {
+                const categories = data.categories;
+                categories.forEach(function (category) {
+                    const strCategory = category.strCategory;
+                    const labelElement = document.createElement("label");
+                    const categoryElement = document.createElement("input");
 
-                const strCategory = category.strCategory;
-                const labelElement = document.createElement("label");
-                const categoryElement = document.createElement("input");
+                    categoryElement.type = "checkbox";
+                    categoryElement.value = strCategory;
 
-                categoryElement.type = "checkbox";
-                categoryElement.value = strCategory;
+                    const categoryNameElement = document.createElement("span");
+                    categoryNameElement.textContent = strCategory;
 
-                const categoryNameElement = document.createElement("span");
-                categoryNameElement.textContent = strCategory;
+                    labelElement.appendChild(categoryElement);
+                    labelElement.appendChild(categoryNameElement);
+                    categoriesElement.appendChild(labelElement);
 
-                labelElement.appendChild(categoryElement);
-                labelElement.appendChild(categoryNameElement);
-                categoriesElement.appendChild(labelElement);
-
-                document.querySelector(".big-btn").style.display = "none";
+                    document.querySelector(".big-btn").style.display = "none";
+                });
+            })
+            .catch((error) => {
+                console.log(error);
             });
-            
-        })
-        .catch((error) => {
-            console.log(error);
-        });
-}
+    }
 
     function generateMeal() {
         fetch(Url)
@@ -70,14 +68,25 @@ function callRecipeApi() {
                 return response.json();
             })
             .then(function (data) {
-                console.log(data)
-            })
+                console.log(data);
+            });
         document.querySelector("#categoryDescription").style.display = "none";
     }
-        
+
     callBtn.addEventListener("click", callRecipeApi);
     callBtn.addEventListener("click", filterCall);
     generateBtn.addEventListener("click", generateMeal);
 
     //event listener on btn to call recipeapi
+
+    var angle = 0;
+    $(".btn-to-spin").click(function () {
+        angle += Math.floor(Math.random() * (1080 - 360 + 1) + 360);
+        $(".food-wheel").css("-webkit-transform", "rotate(" + angle + "deg)");
+
+        setTimeout(() => {
+            $("#intro").attr("style", "display: none");
+            $(".container").attr("style", "display: flex");
+        }, 6000);
+    });
 });
