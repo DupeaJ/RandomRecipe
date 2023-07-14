@@ -33,6 +33,15 @@ $(function () {
             })
             .then(function (data) {
                 console.log(data.meals);
+                console.log(data.meals.length);
+                var i = Math.floor(Math.random() * data.meals.length);
+                console.log(i);
+
+                // display recipe 
+                $(".recipe-title").text(data.meals[i].strMeal);
+                $(".image").attr("src", data.meals[i].strMealThumb);
+                $(".instructions").text(data.meals[i].strMeal);
+
             });
     }
 
