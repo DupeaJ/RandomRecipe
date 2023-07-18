@@ -84,7 +84,7 @@ function callRecipeApi() {
                 // display recipe 
                 $(".recipe-title").text(data.meals[i].strMeal);
                 $(".image").attr("src", data.meals[i].strMealThumb);
-                
+
                 // grab full details 
                 const fullDetailsUrl = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=" + data.meals[i].idMeal;
                 fetch(fullDetailsUrl)
@@ -96,6 +96,32 @@ function callRecipeApi() {
                         console.log(data.meals[0].strInstructions);
                         $(".instructions").text(data.meals[0].strInstructions);
                     });
+                
+                // randomly choose cocktail 
+                const cocktailUrl = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic";
+                fetch(cocktailUrl)
+                    .then(function (response) {
+                        return response.json();
+                    })
+                    .then(function (data) {
+                        console.log(data);
+
+                        // generate random cocktail 
+                        console.log(data.drinks.length);
+                        var i = Math.floor(Math.random() * data.drinks.length);
+                        console.log(i);
+
+                        // display cocktail recipe 
+                        console.log(data.drinks[i].strDrink);
+                        console.log("drinkID: " + data.drinks[i].idDrink);
+                        // display title 
+                        $(".cocktail-title").text(data.drinks[i].strDrink);
+                        // display image 
+                        $(".cocktail-image").attr("src", data.drinks[i].strDrinkThumb);
+                        
+                    })
+                
+                
                 
             });
 
