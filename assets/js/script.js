@@ -18,11 +18,13 @@ $(function () {
         location.href = "/";
     });
 
+    var Url = "https://www.themealdb.com/api/json/v1/1/categories.php?";
     const callBtn = document.querySelector("#call-button");
     const generateBtn = document.querySelector(".btn-to-spin");
+    const categoriesElement = document.getElementById("categoryDescription");
     //selecting button
 
-function callRecipeApi() {
+    function callRecipeApi() {
         fetch(Url)
             .then(function (response) {
                 return response.json();
@@ -54,12 +56,9 @@ function callRecipeApi() {
             });
 }
     
-    var Url = "https://www.themealdb.com/api/json/v1/1/categories.php?";
-    // url variable
-
-    const categoriesElement = document.getElementById("categoryDescription");
-
     function filterCall() {
+        //first calls checkstorage to see if any items are present
+        checkStorage();
         const checkboxes = document.querySelectorAll(
         'input[type="checkbox"]:checked'
     );
@@ -68,7 +67,7 @@ function callRecipeApi() {
     );
 
         const filterUrl =
-            "https://www.themealdb.com/api/json/v1/1/filter.php?c=" + checkedValues.join(",");
+            "https://www.themealdb.com/api/json/v1/1/filter.php?c=" + checkedValues.join("&c=");
         
         fetch(filterUrl)
             //call api return response as json
@@ -76,24 +75,29 @@ function callRecipeApi() {
                 return response.json();
             })
             .then(function (data) {
-                console.log(data.meals);
-                console.log(data.meals.length);
+                //console.log(data.meals);
+                //console.log(data.meals.length);
                 var i = Math.floor(Math.random() * data.meals.length);
-                console.log(i);
+                //console.log(i);
 
                 // display recipe 
                 $(".recipe-title").text(data.meals[i].strMeal);
                 $(".image").attr("src", data.meals[i].strMealThumb);
-
+                
+                //sets mead id in local storage
+                const mealId = data.meals[i].idMeal;
+                console.log("meal ID" + mealId);
+                const mealIdCounter = "Meal ID-" + counter;
+                localStorage.setItem(mealIdCounter, JSON.stringify(mealId));
+                
                 // grab full details 
-                const fullDetailsUrl = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=" + data.meals[i].idMeal;
+                const fullDetailsUrl = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=" + mealId;
                 fetch(fullDetailsUrl)
                     .then(function (response) {
                         return response.json();
                     })
                     .then(function (data) {
-                        console.log(data);
-                        console.log(data.meals[0].strInstructions);
+                        //console.log(data.meals[0].strInstructions);
                         $(".instructions").text(data.meals[0].strInstructions);
                     });
                 
@@ -104,16 +108,20 @@ function callRecipeApi() {
                         return response.json();
                     })
                     .then(function (data) {
-                        console.log(data);
-
+                        //console.log(data);
                         // generate random cocktail 
-                        console.log(data.drinks.length);
                         var i = Math.floor(Math.random() * data.drinks.length);
-                        console.log(i);
-
-                        // display cocktail recipe 
-                        console.log(data.drinks[i].strDrink);
+                        console.log("random drink number: " + i);
+                        console.log("drink name: " + data.drinks[i].strDrink);
                         console.log("drinkID: " + data.drinks[i].idDrink);
+
+                        //sets drink id in storage 
+                        const drinkIdCounter = "Drink ID-" + counter;
+                        localStorage.setItem(
+                            drinkIdCounter,
+                            JSON.stringify(data.drinks[i].idDrink)
+                        );
+                        // display cocktail recipe 
                         // display title 
                         $(".cocktail-title").text(data.drinks[i].strDrink);
                         // display image 
@@ -121,30 +129,31 @@ function callRecipeApi() {
                         
                     })
                 
-                
-                
             });
-
-
-    }
-
-    
-
-    function generateMeal() {
-        fetch(Url)
-            .then(function (response) {
-                return response.json();
-            });
+    }  
+    function hideMenu() {
             document.querySelector("#categoryDescription").style.display = "none";
-        
-                
+    }
+    //counter for meal and drink ids to store with new keys
+    var counter = 0; 
+    //local storage to get past recipes
+    function checkStorage() {
+        let storedData;
+        while (true) {
+            storedData = localStorage.getItem("Meal ID-" + counter);
+            if (!storedData) {
+                break;
+            }
+            storedData = JSON.parse(storedData);
+            console.log("Retrieved data from local storage:", storedData);
+            counter++;
+            console.log("Counter:", counter);
+        }
     }
 
     callBtn.addEventListener("click", callRecipeApi);
     generateBtn.addEventListener("click", filterCall);
-    generateBtn.addEventListener("click", generateMeal);
-
-    //event listener on btn to call recipeapi
+    generateBtn.addEventListener("click", hideMenu);
 
     var angle = 0;
     $(".btn-to-spin").click(function () {
