@@ -99,6 +99,7 @@ $(function () {
                     .then(function (data) {
                         //console.log(data.meals[0].strInstructions);
                         $(".instructions").text(data.meals[0].strInstructions);
+                        $(".area").text(data.meals[0].strArea);
                     });
                 
                 // randomly choose cocktail 
@@ -111,8 +112,8 @@ $(function () {
                         //console.log(data);
                         // generate random cocktail 
                         var i = Math.floor(Math.random() * data.drinks.length);
-                        console.log("random drink number: " + i);
-                        console.log("drink name: " + data.drinks[i].strDrink);
+                        //console.log("random drink number: " + i);
+                        //console.log("drink name: " + data.drinks[i].strDrink);
                         console.log("drinkID: " + data.drinks[i].idDrink);
 
                         //sets drink id in storage 
@@ -126,7 +127,17 @@ $(function () {
                         $(".cocktail-title").text(data.drinks[i].strDrink);
                         // display image 
                         $(".cocktail-image").attr("src", data.drinks[i].strDrinkThumb);
-                        
+                        // grab instructions 
+                        const cocktailDetailsUrl = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + data.drinks[i].idDrink;
+                        fetch(cocktailDetailsUrl) 
+                            .then(function (response) {
+                                return response.json();
+                            })
+                            .then(function (data) {
+                                console.log(data);
+                                console.log(data.drinks[0].strInstructions);
+                                $(".cocktail-instructions").text(data.drinks[0].strInstructions);
+                            })
                     })
                 
             });
@@ -145,9 +156,9 @@ $(function () {
                 break;
             }
             storedData = JSON.parse(storedData);
-            console.log("Retrieved data from local storage:", storedData);
+            //console.log("Retrieved data from local storage:", storedData);
             counter++;
-            console.log("Counter:", counter);
+            //console.log("Counter:", counter);
         }
     }
 
