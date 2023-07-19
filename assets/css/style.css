@@ -35,12 +35,13 @@ footer {
     display: flex;
     justify-content: center;
     margin-top: 50px;
-    font-size: 25px;
+    font-size: 20px;
 }
 
 #home-button {
     font-family: "Advent Pro", sans-serif;
     margin: 0;
+    margin-left: 10px;
 }
 
 #meal-title {
@@ -93,7 +94,7 @@ footer {
 }
 
 #dropdown-button {
-    font-size: 25px;
+    font-size: 20px;
     margin: 0;
     background-color: black;
     cursor: url("/assets/images/pizza.cur"), pointer;
