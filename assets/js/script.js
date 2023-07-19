@@ -4,12 +4,11 @@ $(function () {
     $("#home-button").text("RandomRecipe.com");
 
     $("#menu-button").on("click", function () {
-        $("#side-nav").attr("style", "width: 400px");
+        $("#side-nav").attr("style", "width: 250px");
     });
 
     $("#close-button").on("click", function () {
         $("#side-nav").attr("style", "width: 0");
-        $("h2").attr("style", "display: block");
     });
 
     // $("main").on("click", function () {
@@ -20,6 +19,40 @@ $(function () {
     // });
 
     fetchMealsAPI();
+
+    var iconArr = [
+        "🍉",
+        "🍋",
+        "🥑",
+        "🌶",
+        "🥩",
+        "🥓",
+        "🍔",
+        "🍕",
+        "🌮",
+        "🍟",
+        "🍤",
+        "🥠",
+        "🦀",
+        "🦞",
+        "🍩",
+        "🥧",
+        "🍸",
+        "🍹",
+        "🍷",
+        "🍺",
+        "🥃",
+    ];
+    var iconIndex = 0;
+    setInterval(function () {
+        iconIndex++;
+        $("#footer-icon").fadeOut(0, function () {
+            $(this).attr("style", "display: inline");
+            $(this)
+                .text(iconArr[iconIndex % iconArr.length])
+                .fadeIn(0);
+        });
+    }, 250);
 });
 
 function fetchMealsAPI() {
@@ -87,10 +120,11 @@ function generateCategory() {
     var checkedArr = $(".checkbox:checkbox:checked");
 
     if (checkedArr.length < 1) {
-        $("#generate-button").text("Please Select Category");
+        $("#generate-button").text("Select Categories");
         $("#generate-button").addClass("alert");
     } else {
-        $("#generate-button").attr("style", "display: none");
+        $("#generate-section").attr("style", "display: none");
+        $("footer").attr("style", "display: none");
 
         for (let i = 0; i < checkedArr.length; i++) {
             const checkedEl = checkedArr[i];
@@ -99,11 +133,11 @@ function generateCategory() {
 
         var category = "";
         var categoryIndex = 0;
-        randomLoop = Math.floor(Math.random() * (1000 - 250) + 250);
+        randomLoop = Math.floor(Math.random() * (250 - 100) + 100);
         var categoryLoop = setInterval(function () {
             categoryIndex++;
             $("#category-span").fadeOut(0, function () {
-                $(this).attr("style", "display: block");
+                $(this).attr("style", "display: flex");
                 $(this)
                     .text(categoryArr[categoryIndex % categoryArr.length])
                     .fadeIn(0);
@@ -111,14 +145,14 @@ function generateCategory() {
             category = $("#category-span").text();
         }, randomLoop);
 
-        randomTimeout = Math.floor(Math.random() * (7500 - 2500) + 2500);
+        randomTimeout = Math.floor(Math.random() * (5000 - 2000) + 2000);
         setTimeout(() => {
             clearInterval(categoryLoop);
             fetchCocktailsAPI();
             getMeals(category);
             $("#home-button").text("< Back");
             $("#home-button").on("click", function () {
-                window.location.href = "/RandomRecipe";
+                window.location.href = "/";
             });
         }, randomTimeout);
     }
@@ -147,6 +181,7 @@ function getMeals(category) {
                 // $("#dropdown-button").attr("style", "display: none");
                 $("#category-span").attr("style", "display: none");
                 $("#card-group").attr("style", "display: flex");
+                $("footer").attr("style", "display: flex");
             }, 3000);
         });
 }

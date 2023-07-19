@@ -37,13 +37,13 @@
                 type="button"
                 data-toggle="checkbox-dropdown"
             >
-                Select Category
+                Select Categories
             </button>
             <div
                 id="checkbox-dropdown"
                 class="dropdown-pane"
                 data-position="bottom"
-                data-alignment="center"
+                data-alignment="right"
                 data-hover-delay="0"
                 data-dropdown
                 data-hover="true"
@@ -52,9 +52,15 @@
         </nav>
         <main>
             <span id="category-span"></span>
-            <button id="generate-button" class="button success" type="button">
-                Generate Recipes
-            </button>
+            <section id="generate-section">
+                <button
+                    id="generate-button"
+                    class="button success"
+                    type="button"
+                >
+                    Generate Recipes
+                </button>
+            </section>
             <div
                 id="card-group"
                 class="grid-x grid-margin-x small-up-2 medium-up-3"
@@ -155,7 +161,7 @@
                 </div>
             </div>
         </main>
-        <footer></footer>
+        <footer>Made with&nbsp;<span id="footer-icon"></span></footer>
     </body>
     <script
         src="https://code.jquery.com/jquery-3.7.0.min.js"

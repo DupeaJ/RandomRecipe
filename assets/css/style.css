@@ -9,7 +9,7 @@
 * {
     font-family: "Advent Pro", sans-serif;
     scroll-behavior: smooth;
-    cursor: url("../images/pizza.cur"), auto;
+    cursor: url("/assets/images/pizza.cur"), pointer;
 }
 
 nav {
@@ -31,6 +31,13 @@ main {
     align-items: center;
 }
 
+footer {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    font-size: 25px;
+}
+
 #home-button {
     font-family: "Advent Pro", sans-serif;
     margin: 0;
@@ -49,7 +56,7 @@ main {
 #accordion-title-label {
     font-size: 20px;
     color: #aaa;
-    cursor: url("../images/pizza.cur"), auto;
+    cursor: url("/assets/images/pizza.cur"), pointer;
 }
 
 #card-group {
@@ -61,17 +68,23 @@ main {
 
 #category-span {
     display: none;
-    font-size: 100px;
-    margin-top: 150px;
+    align-items: center;
+    height: 80vh;
+    font-size: 75px;
+}
+
+#generate-section {
+    display: flex;
+    align-items: center;
+    height: 80vh;
 }
 
 #generate-button {
-    font-size: 20px;
-    margin-top: 200px;
+    font-size: 40px;
     margin-bottom: 0;
     border-radius: 30px;
     color: white;
-    cursor: url("../images/pizza.cur"), auto;
+    cursor: url("/assets/images/pizza.cur"), pointer;
 }
 
 #menu-button {
@@ -80,10 +93,10 @@ main {
 }
 
 #dropdown-button {
-    font-size: 20px;
+    font-size: 25px;
     margin: 0;
     background-color: black;
-    cursor: url("../images/pizza.cur"), auto;
+    cursor: url("/assets/images/pizza.cur"), pointer;
 }
 
 #checkbox-dropdown {
@@ -92,7 +105,7 @@ main {
 
 #checkbox-dropdown label {
     font-size: 1rem;
-    cursor: url("../images/pizza.cur"), auto;
+    cursor: url("/assets/images/pizza.cur"), pointer;
     -webkit-user-select: none;
     -moz-user-select: none;
     user-select: none;
@@ -105,11 +118,10 @@ main {
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: black;
+    background-color: #aaa;
     overflow-x: hidden;
     padding-top: 60px;
     transition: 0.5s;
-    box-shadow: 10px 0px 8px #aaa;
 }
 
 #close-button {
