@@ -9,11 +9,15 @@ nav {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    background-color: black;
-    color: white;
+    background-color: #11111b;
+    color: #cdd6f4;
     position: sticky;
     top: 0;
     z-index: 3;
+}
+
+body {
+    background-color: #1e1e2e;
 }
 
 main {
@@ -28,13 +32,15 @@ footer {
     justify-content: center;
     margin-top: 50px;
     font-size: 20px;
+    color: #cdd6f4;
 }
 
 #saved-recipes {
     margin-top: 10px;
     margin-right: 25px;
     border-radius: 30px;
-    color: white;
+    background-color: #1e1e2e;
+    color: #cdd6f4;
     cursor: url("/assets/images/pizza.cur"), pointer;
 }
 
@@ -77,6 +83,7 @@ footer {
     align-items: center;
     height: 80vh;
     font-size: 75px;
+    color: #cdd6f4;
 }
 
 #generate-section {
@@ -101,7 +108,8 @@ footer {
 #dropdown-button {
     font-size: 20px;
     margin: 0;
-    background-color: black;
+    background-color: #11111b;
+    color: #cdd6f4;
     cursor: url("/assets/images/pizza.cur"), pointer;
 }
 
@@ -124,7 +132,7 @@ footer {
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #aaa;
+    background-color: #6c7086;
     overflow-x: hidden;
     padding-top: 60px;
     transition: 0.5s;
@@ -136,4 +144,5 @@ footer {
     right: 25px;
     font-size: 36px;
     margin-left: 50px;
+    color: #1e1e2e;
 }
