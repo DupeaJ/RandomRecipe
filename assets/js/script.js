@@ -123,6 +123,7 @@ function generateCategory() {
         $("#generate-button").text("Select Categories");
         $("#generate-button").addClass("alert");
     } else {
+        $("#menu-button").attr("style", "display: none");
         $("#generate-section").attr("style", "display: none");
         $("footer").attr("style", "display: none");
 
@@ -148,11 +149,17 @@ function generateCategory() {
         randomTimeout = Math.floor(Math.random() * (5000 - 2000) + 2000);
         setTimeout(() => {
             clearInterval(categoryLoop);
-            fetchCocktailsAPI();
             getMeals(category);
+            fetchCocktailsAPI();
             $("#home-button").text("< Back");
             $("#home-button").on("click", function () {
-                window.location.href = "/RandomRecipe";
+                localStorage.setItem(
+                    "itemNum",
+                    JSON.parse(localStorage.getItem("itemNum")) + 1
+                );
+                setLocalStorage(localStorage.getItem("itemNum"));
+                createSideNav();
+                window.location.href = "/";
             });
         }, randomTimeout);
     }
@@ -192,6 +199,8 @@ function getRandomMeal(meal) {
 
     var mealIdUrl =
         "https://www.themealdb.com/api/json/v1/1/lookup.php?i=" + meal.idMeal;
+
+    $("#meal-title").attr("data-mealurl", mealIdUrl);
 
     fetch(mealIdUrl)
         .then(function (response) {
@@ -234,6 +243,8 @@ function getRandomDrink(drink) {
         "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" +
         drink.idDrink;
 
+    $("#drink-title").attr("data-drinkurl", drinkIdUrl);
+
     fetch(drinkIdUrl)
         .then(function (response) {
             if (response.status !== 200) {
@@ -268,6 +279,20 @@ function getRandomDrink(drink) {
                 }
             }
         });
+}
+
+function setLocalStorage(itemNum) {
+    localStorage.setItem("item-" + itemNum, [
+        $("#meal-title").attr("data-mealurl"),
+        $("#drink-title").attr("data-drinkurl"),
+    ]);
+}
+
+function createSideNav() {
+    // build out side nav with local storage
+    // split localstorage.getItem("item-"+i)
+    // add button to <ul>
+    // create another function if pressed do functions above to load page
 }
 
 // $(function () {
