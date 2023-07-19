@@ -1,10 +1,10 @@
-# RandomRecipe.com
+# <h1 align="center">RandomRecipe.com</h1>
 
 ## Description
 
-RandomRecipe.com serves individuals who are new to cooking at home (and maybe a bit indecisive), and who are looking for a place to begin their cooking journey. With an interactive and engaging experience, our web app generates a random food and cocktail recipe for users based on their selected preferences.
+RandomRecipe.com serves individuals who are new to cooking at home (maybe a bit indecisive), and who are looking for a place to begin their cooking journey. With an interactive and engaging experience, our web app generates a random food and cocktail recipe for users based on their selected preferences.
 
-This web app is a sinlge page application powered by JavaScript that uses two APIs (MealDB and CocktailDB) to generate random food and drink recipes and display them using HTML and CSS.
+This web app is a single page application powered by JavaScript that uses two APIs (MealDB and CocktailDB) to generate random food and drink recipes and display them using HTML and CSS.
 
 -   Motivation: There are countless cooking blogs out there. But often, people who are learning how to cook don’t even know where to start! RandomRecipe.com is the solution. We created this web app to inspire people who are new to cooking and give them a place to start.
 
@@ -27,13 +27,20 @@ and open the project in VS Code.
 
 ## Usage
 
-To visit the live site, click here: https://dupeaj.github.io/RandomRecipe/
+<h3 align="center">To visit the live site, click here: </h3>
+<p align="center">https://dupeaj.github.io/RandomRecipe</p>
+<p>First, select your preference(s) from the drop down menu in the top right nav bar.</p>
+<p> Then, click ‘Generate Recipe’ to see your results!</p>
+<p>Next click save recipes in the top left to store your recipes</p>
+<p>Lastly click the top left dice to view past recipes</p>
 
-First, select your preference(s) from the drop down menu in the top right nav bar. Then, click ‘Generate Recipe’ to see your results!
 
-![Demo](assets/images/screenshot-1.png)
+## Photos
 
-![Demo](assets/images/screenshot-2.png)
+  <img src="assets/images/RandomRecipeLandingPage.PNG" alt="WebPage Landing screen" width="75%" height="75%">
+  <img src="assets/images/RandomRecipeCategories.PNG" alt="WebPage Categories" width="75%" height="75%">
+  <img src="assets/images/RandomRecipeDisplayCards.PNG" alt="WebPage Display cards with recipes" width="75%" height="75%">
+  <img src="assets/images/RandomRecipeSavedRecipes.PNG" alt="WebPage With saved Recipes" width="75%" height="75%">
 
 ## Credits
 
