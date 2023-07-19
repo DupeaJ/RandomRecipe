@@ -159,7 +159,7 @@ function generateCategory() {
                 );
                 setLocalStorage(localStorage.getItem("itemNum"));
                 createSideNav();
-                window.location.href = "/";
+                window.location.href = "/RandomRecipe";
             });
         }, randomTimeout);
     }
