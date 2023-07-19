@@ -1,83 +1,156 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="no-js" lang="en">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>RandomRecipe.com</title>
-        <!-- https://purecss.io/ -->
-        <link
-            rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css"
-            integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls"
-            crossorigin="anonymous"
-        />
         <link
             rel="icon"
             type="image/x-icon"
             href="./assets/images/favicon.ico"
         />
+        <!-- Compressed CSS -->
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.5/dist/css/foundation.min.css"
+            crossorigin="anonymous"
+        />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
-            href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Advent+Pro&display=swap"
             rel="stylesheet"
         />
         <link rel="stylesheet" href="./assets/css/style.css" />
     </head>
     <body>
-        <nav id="navbar">
-            <div id="side-bar">
-                <span id="close-btn">&times;</span>
-                <ul id="past-recipe"></ul>
+        <nav>
+            <div id="side-nav">
+                <span id="close-button">&times;</span>
+                <ul id="prev-recipes"></ul>
             </div>
-            <h1>
-                <span id="hamburger-menu">&#9776;</span>
-                <span id="title">RandomRecipe.com</span>
-            </h1>
+            <h1 id="menu-button">🎲</h1>
+            <h2 id="home-button">RandomRecipe.com</h2>
+            <button
+                id="dropdown-button"
+                class="button"
+                type="button"
+                data-toggle="checkbox-dropdown"
+            >
+                Select Category
+            </button>
+            <div
+                id="checkbox-dropdown"
+                class="dropdown-pane"
+                data-position="bottom"
+                data-alignment="center"
+                data-hover-delay="0"
+                data-dropdown
+                data-hover="true"
+                data-hover-pane="true"
+            ></div>
         </nav>
         <main>
-            <section id="intro">
-                <!-- div for placing api calls -->
-                <div id="categoryDescription"></div>
-                <!-- Button to call function -->
-                <button class="big-btn" id="call-button">
-                    call category titles
-                </button>
-                <!-- Button to spin wheel -->
-                <button class="btn-to-spin">Generate my recipe!</button>
-                <!-- Food Wheel -->
-                <p class="food-wheel" style="text-align: center">
-                    <img
-                        id="spin-me"
-                        src="./assets/images/wheel.png"
-                        alt="food wheel"
-                        height="350"
-                        width="350"
-                    />
-                </p>
-            </section>
-            <div class="container">
-                <div class="box">
-                    <span class="area"></span>
-                </div>
-            </div>
-            <div class="container">
-                <div class="box">
-                    <span class="recipe-title"></span>
-                    <div>
-                        <img class="image" src=""></img>
-                        <strong class="instructions"></strong>
-                        <p class="ingredients"></p>
+            <span id="category-span"></span>
+            <button id="generate-button" class="button success" type="button">
+                Generate Recipes
+            </button>
+            <div
+                id="card-group"
+                class="grid-x grid-margin-x small-up-2 medium-up-3"
+            >
+                <div class="cell">
+                    <div class="card">
+                        <img id="meal-img" src="" alt="meal image" />
+                        <div class="card-section">
+                            <h4 id="meal-title"></h4>
+                            <ul
+                                class="accordion"
+                                data-accordion
+                                data-allow-all-closed="true"
+                            >
+                                <li
+                                    id="accordion-title"
+                                    class="accordion-item"
+                                    data-accordion-item
+                                >
+                                    <a href="#" class="accordion-title">
+                                        Ingredients
+                                    </a>
+
+                                    <div
+                                        id="meal-ingredients-content"
+                                        class="accordion-content"
+                                        data-tab-content
+                                    ></div>
+                                </li>
+                                <li
+                                    id="accordion-title"
+                                    class="accordion-item"
+                                    data-accordion-item
+                                >
+                                    <a href="#" class="accordion-title">
+                                        Instructions
+                                    </a>
+
+                                    <div
+                                        id="meal-instructions-content"
+                                        class="accordion-content"
+                                        data-tab-content
+                                    ></div>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="container">
-                <div class="box">
-                    <span class="cocktail-title"></span>
-                    <div>
-                        <img class="cocktail-image" src=""></img>
-                        <strong class="cocktail-instructions"></strong>
-                        <p class="cocktail-ingredients"></p>
+                <div class="cell">
+                    <div class="card">
+                        <img id="drink-img" src="" alt="drink image" />
+                        <div class="card-section">
+                            <h4 id="drink-title"></h4>
+                            <ul
+                                class="accordion"
+                                data-accordion
+                                data-allow-all-closed="true"
+                            >
+                                <ul
+                                    class="accordion"
+                                    data-accordion
+                                    data-allow-all-closed="true"
+                                >
+                                    <li
+                                        id="accordion-title"
+                                        class="accordion-item"
+                                        data-accordion-item
+                                    >
+                                        <a href="#" class="accordion-title">
+                                            Ingredients
+                                        </a>
+
+                                        <div
+                                            id="drink-ingredients-content"
+                                            class="accordion-content"
+                                            data-tab-content
+                                        ></div>
+                                    </li>
+                                    <li
+                                        id="accordion-title"
+                                        class="accordion-item"
+                                        data-accordion-item
+                                    >
+                                        <a href="#" class="accordion-title">
+                                            Instructions
+                                        </a>
+
+                                        <div
+                                            id="drink-instructions-content"
+                                            class="accordion-content"
+                                            data-tab-content
+                                        ></div>
+                                    </li>
+                                </ul>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -87,6 +160,11 @@
     <script
         src="https://code.jquery.com/jquery-3.7.0.min.js"
         integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
+        crossorigin="anonymous"
+    ></script>
+    <!-- Compressed JavaScript -->
+    <script
+        src="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.5/dist/js/foundation.min.js"
         crossorigin="anonymous"
     ></script>
     <script src="./assets/js/script.js"></script>
