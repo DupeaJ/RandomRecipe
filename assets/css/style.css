@@ -1,11 +1,3 @@
-:root {
-    --tea-green: #ccd5aeff;
-    --beige: #e9edc9ff;
-    --cornsilk: #fefae0ff;
-    --papaya-whip: #faedcdff;
-    --buff: #d4a373ff;
-}
-
 * {
     font-family: "Advent Pro", sans-serif;
     scroll-behavior: smooth;
@@ -36,6 +28,19 @@ footer {
     justify-content: center;
     margin-top: 50px;
     font-size: 20px;
+}
+
+#saved-recipes {
+    margin-top: 10px;
+    margin-right: 25px;
+    border-radius: 30px;
+    color: white;
+    cursor: url("/assets/images/pizza.cur"), pointer;
+}
+
+#prev-recipes {
+    display: flex;
+    flex-direction: column;
 }
 
 #home-button {
