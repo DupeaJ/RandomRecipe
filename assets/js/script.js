@@ -118,7 +118,7 @@ function generateCategory() {
             getMeals(category);
             $("#home-button").text("< Back");
             $("#home-button").on("click", function () {
-                window.location.href = "../../index.html";
+                window.location.href = "/";
             });
         }, randomTimeout);
     }
