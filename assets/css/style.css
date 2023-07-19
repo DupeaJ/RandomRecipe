@@ -7,184 +7,115 @@
 }
 
 * {
-    font-family: "Quicksand", sans-serif;
-    padding: 0;
-    margin: 0;
+    font-family: "Advent Pro", sans-serif;
     scroll-behavior: smooth;
     cursor: url("../images/pizza.cur"), auto;
 }
 
-body {
-    display: flex;
-    flex-direction: column;
-}
-
 nav {
-    background-color: var(--buff);
-    padding-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+    color: white;
     position: sticky;
     top: 0;
     z-index: 3;
 }
 
-nav h1 {
-    color: var(--cornsilk);
-}
-
 main {
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    padding: 100px;
+    align-items: center;
 }
 
-#hamburger-menu {
-    font-size: 40px;
-    margin: 10px;
+#home-button {
+    font-family: "Advent Pro", sans-serif;
+    margin: 0;
 }
 
-#side-bar {
+#meal-title {
+    font-family: "Advent Pro", sans-serif;
+    font-size: 30px;
+}
+
+#drink-title {
+    font-family: "Advent Pro", sans-serif;
+    font-size: 30px;
+}
+
+#accordion-title-label {
+    font-size: 20px;
+    color: #aaa;
+    cursor: url("../images/pizza.cur"), auto;
+}
+
+#card-group {
+    display: none;
+    justify-content: center;
+    margin-top: 50px;
+    font-size: 20px;
+}
+
+#category-span {
+    display: none;
+    font-size: 100px;
+    margin-top: 150px;
+}
+
+#generate-button {
+    font-size: 20px;
+    margin-top: 200px;
+    margin-bottom: 0;
+    border-radius: 30px;
+    color: white;
+    cursor: url("../images/pizza.cur"), auto;
+}
+
+#menu-button {
+    margin: 0;
+    margin-left: 10px;
+}
+
+#dropdown-button {
+    font-size: 20px;
+    margin: 0;
+    background-color: black;
+    cursor: url("../images/pizza.cur"), auto;
+}
+
+#checkbox-dropdown {
+    width: 165px;
+}
+
+#checkbox-dropdown label {
+    font-size: 1rem;
+    cursor: url("../images/pizza.cur"), auto;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+#side-nav {
     height: 100%;
     width: 0;
     position: fixed;
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: var(--cornsilk);
+    background-color: black;
     overflow-x: hidden;
-    transition: 0.5s;
     padding-top: 60px;
+    transition: 0.5s;
+    box-shadow: 10px 0px 8px #aaa;
 }
 
-#close-btn {
-    color: var(--buff);
+#close-button {
     position: absolute;
     top: 0;
     right: 25px;
     font-size: 36px;
     margin-left: 50px;
-}
-
-/* styling button */
-.big-btn {
-    font-size: 18px;
-    padding: 10px 20px;
-    background-color: #f1f1f1;
-    color: #333;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.checkbox-container {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-label {
-    display: flex;
-    align-items: center;
-    margin-right: 10px;
-    margin-bottom: 10px;
-}
-div#categoryDescription {
-    border: solid grey 3px;
-    border-radius: 5px;
-}
-
-.food-wheel {
-    transition: transform 5s;
-}
-
-#intro {
-    display: flex;
-}
-
-/* recipe card styling */
-.container {
-    display: none;
-    position: relative;
-    font-family: sans-serif;
-}
-
-.container::before,
-.container::after {
-    content: "";
-    background-color: #ad641b4c;
-    position: absolute;
-}
-
-.container::before {
-    border-radius: 50%;
-    width: 6rem;
-    height: 6rem;
-    top: 30%;
-    right: 7%;
-}
-
-.container::after {
-    content: "";
-    position: absolute;
-    height: 3rem;
-    top: 8%;
-    right: 5%;
-    border: 1px solid;
-}
-
-.container .box {
-    width: 11.875em;
-    height: 15.875em;
-    padding: 1rem;
-    background-color: rgba(255, 255, 255, 0.074);
-    border: 1px solid rgba(255, 255, 255, 0.222);
-    -webkit-backdrop-filter: blur(20px);
-    backdrop-filter: blur(20px);
-    border-radius: 0.7rem;
-    transition: all ease 0.3s;
-    box-shadow: 0px 0px 20px 1px #ad641b4c;
-}
-
-.container .box {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.container .box .title {
-    font-size: 2rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-}
-
-.container .box div strong {
-    display: block;
-    margin-bottom: 0.5rem;
-}
-
-.container .box div p {
-    margin: 0;
-    font-size: 0.9em;
-    font-weight: 300;
-    letter-spacing: 0.1em;
-}
-
-.container .box div span {
-    font-size: 0.7rem;
-    font-weight: 300;
-}
-
-.container .box div span:nth-child(3) {
-    font-weight: 500;
-    margin-right: 0.2rem;
-}
-
-.container .box:hover {
-    box-shadow: 0px 0px 20px 1px black;
-    border: 1px solid rgba(255, 255, 255, 0.454);
-}
-
-.image {
-    width: 11.875em;   
-}
-
-.cocktail-image {
-    width: 11.875em;
 }
