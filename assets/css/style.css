@@ -73,6 +73,7 @@ footer {
 
 #card-group {
     display: none;
+    width: 100%;
     justify-content: center;
     margin-top: 50px;
     font-size: 20px;
