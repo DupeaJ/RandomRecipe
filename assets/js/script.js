@@ -264,7 +264,6 @@ function createSideNav(i, mealUrl, drinkUrl) {
                     recipesButton.text(mealName + " & " + drinkName);
                 });
         });
-    // recipesButton.text("Saved Recipes " + i);
 
     recipesButton.on("click", function () {
         generatePrevRecipe(mealUrl, drinkUrl);
@@ -318,7 +317,7 @@ function fetchMeal(data) {
     for (let i = 1; i < 21; i++) {
         const mealIngredient = "strIngredient" + i;
         const mealMeasure = "strMeasure" + i;
-        if ((meal[mealIngredient] !== null || meal[mealMeasure]) !== null) {
+        if (meal[mealIngredient] !== null || meal[mealMeasure] !== "") {
             var ingredientsCombo =
                 meal[mealIngredient] + " - " + meal[mealMeasure];
             if (meal[mealIngredient] !== "" && meal[mealMeasure] === "") {
