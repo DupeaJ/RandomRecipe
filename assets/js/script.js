@@ -320,7 +320,10 @@ function fetchMeal(data) {
         if (meal[mealIngredient] !== null || meal[mealMeasure] !== "") {
             var ingredientsCombo =
                 meal[mealIngredient] + " - " + meal[mealMeasure];
-            if (meal[mealIngredient] !== "" && meal[mealMeasure] === "") {
+            if (
+                (meal[mealIngredient] !== "" && meal[mealMeasure] === "") ||
+                (meal[mealIngredient] !== "" && meal[mealMeasure] === " ")
+            ) {
                 ingredientsCombo = meal[mealIngredient];
             } else if (meal[mealIngredient] === "") {
                 return;
