@@ -158,8 +158,8 @@ function generateCategory() {
                     JSON.parse(localStorage.getItem("itemNum")) + 1
                 );
                 setLocalStorage(localStorage.getItem("itemNum"));
-                // window.location.href = "/RandomRecipe";
-                window.location.href = "/";
+                window.location.href = "/RandomRecipe";
+                // window.location.href = "/";
             });
         }, randomTimeout);
     }
@@ -279,8 +279,8 @@ function generatePrevRecipe(mealUrl, drinkUrl) {
     $("#card-group").attr("style", "display: flex");
     $("#home-button").text("< Back");
     $("#home-button").on("click", function () {
-        // window.location.href = "/RandomRecipe";
-        window.location.href = "/";
+        window.location.href = "/RandomRecipe";
+        // window.location.href = "/";
     });
 
     fetch(mealUrl)
