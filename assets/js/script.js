@@ -158,8 +158,8 @@ function generateCategory() {
                     JSON.parse(localStorage.getItem("itemNum")) + 1
                 );
                 setLocalStorage(localStorage.getItem("itemNum"));
-                window.location.href = "/RandomRecipe";
-                // window.location.href = "/";
+                // window.location.href = "/RandomRecipe";
+                window.location.href = "/";
             });
         }, randomTimeout);
     }
@@ -193,9 +193,6 @@ function getMeals(category) {
 }
 
 function getRandomMeal(meal) {
-    $("#meal-img").attr("src", meal.strMealThumb);
-    $("#meal-title").text(meal.strMeal);
-
     var mealIdUrl =
         "https://www.themealdb.com/api/json/v1/1/lookup.php?i=" + meal.idMeal;
 
@@ -209,35 +206,11 @@ function getRandomMeal(meal) {
             return response.json();
         })
         .then(function (data) {
-            var meal = data.meals[0];
-            $("#meal-instructions-content").append(
-                $("<p></p>").text(meal.strInstructions)
-            );
-            for (let i = 1; i < 21; i++) {
-                const mealIngredient = "strIngredient" + i;
-                const mealMeasure = "strMeasure" + i;
-                if ((meal[mealIngredient] || meal[mealMeasure]) !== "") {
-                    var ingredientsCombo =
-                        meal[mealIngredient] + " - " + meal[mealMeasure];
-                    if (meal[mealMeasure] === "" || meal[mealMeasure] === " ") {
-                        return;
-                    }
-                    $("#meal-ingredients-content").append(
-                        $("<ul></ul>").append(
-                            $("<li></li>")
-                                .append("<p></p>")
-                                .text(ingredientsCombo)
-                        )
-                    );
-                }
-            }
+            fetchMeal(data);
         });
 }
 
 function getRandomDrink(drink) {
-    $("#drink-img").attr("src", drink.strDrinkThumb);
-    $("#drink-title").text(drink.strDrink);
-
     var drinkIdUrl =
         "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" +
         drink.idDrink;
@@ -252,31 +225,7 @@ function getRandomDrink(drink) {
             return response.json();
         })
         .then(function (data) {
-            var drink = data.drinks[0];
-            $("#drink-instructions-content").append(
-                $("<p></p>").text(drink.strInstructions)
-            );
-            for (let i = 1; i < 16; i++) {
-                const drinkIngredient = "strIngredient" + i;
-                const drinkMeasure = "strMeasure" + i;
-                if ((drink[drinkIngredient] || drink[drinkMeasure]) !== null) {
-                    var ingredientsCombo =
-                        drink[drinkIngredient] + " - " + drink[drinkMeasure];
-                    if (
-                        drink[drinkMeasure] === null ||
-                        drink[drinkMeasure] === ""
-                    ) {
-                        ingredientsCombo = drink[drinkIngredient];
-                    }
-                    $("#drink-ingredients-content").append(
-                        $("<ul></ul>").append(
-                            $("<li></li>")
-                                .append("<p></p>")
-                                .text(ingredientsCombo)
-                        )
-                    );
-                }
-            }
+            fetchDrink(data);
         });
 }
 
@@ -293,10 +242,33 @@ function createSideNav(i, mealUrl, drinkUrl) {
 
     prevRecipesUl.append(recipesButton.attr("id", "saved-recipes"));
     recipesButton.addClass("button primary");
-    recipesButton.text("Saved Recipes " + i);
+
+    fetch(mealUrl)
+        .then(function (response) {
+            if (response.status !== 200) {
+                console.log("API Not Found.");
+            }
+            return response.json();
+        })
+        .then(function (data) {
+            var mealName = data.meals[0].strMeal;
+            fetch(drinkUrl)
+                .then(function (response) {
+                    if (response.status !== 200) {
+                        console.log("API Not Found.");
+                    }
+                    return response.json();
+                })
+                .then(function (data) {
+                    var drinkName = data.drinks[0].strDrink;
+                    recipesButton.text(mealName + " & " + drinkName);
+                });
+        });
+    // recipesButton.text("Saved Recipes " + i);
 
     recipesButton.on("click", function () {
         generatePrevRecipe(mealUrl, drinkUrl);
+        $("#side-nav").attr("style", "width: 0");
     });
 }
 
@@ -307,11 +279,10 @@ function generatePrevRecipe(mealUrl, drinkUrl) {
     $("#card-group").attr("style", "display: flex");
     $("#home-button").text("< Back");
     $("#home-button").on("click", function () {
-        window.location.href = "/RandomRecipe";
-        // window.location.href = "/";
+        // window.location.href = "/RandomRecipe";
+        window.location.href = "/";
     });
-    console.log(mealUrl);
-    console.log(drinkUrl);
+
     fetch(mealUrl)
         .then(function (response) {
             if (response.status !== 200) {
@@ -320,31 +291,7 @@ function generatePrevRecipe(mealUrl, drinkUrl) {
             return response.json();
         })
         .then(function (data) {
-            var meal = data.meals[0];
-
-            $("#meal-img").attr("src", meal.strMealThumb);
-            $("#meal-title").text(meal.strMeal);
-            $("#meal-instructions-content").append(
-                $("<p></p>").text(meal.strInstructions)
-            );
-            for (let i = 1; i < 21; i++) {
-                const mealIngredient = "strIngredient" + i;
-                const mealMeasure = "strMeasure" + i;
-                if ((meal[mealIngredient] || meal[mealMeasure]) !== "") {
-                    var ingredientsCombo =
-                        meal[mealIngredient] + " - " + meal[mealMeasure];
-                    if (meal[mealMeasure] === "" || meal[mealMeasure] === " ") {
-                        return;
-                    }
-                    $("#meal-ingredients-content").append(
-                        $("<ul></ul>").append(
-                            $("<li></li>")
-                                .append("<p></p>")
-                                .text(ingredientsCombo)
-                        )
-                    );
-                }
-            }
+            fetchMeal(data);
         });
 
     fetch(drinkUrl)
@@ -355,33 +302,70 @@ function generatePrevRecipe(mealUrl, drinkUrl) {
             return response.json();
         })
         .then(function (data) {
-            var drink = data.drinks[0];
-
-            $("#drink-img").attr("src", drink.strDrinkThumb);
-            $("#drink-title").text(drink.strDrink);
-            $("#drink-instructions-content").append(
-                $("<p></p>").text(drink.strInstructions)
-            );
-            for (let i = 1; i < 16; i++) {
-                const drinkIngredient = "strIngredient" + i;
-                const drinkMeasure = "strMeasure" + i;
-                if ((drink[drinkIngredient] || drink[drinkMeasure]) !== null) {
-                    var ingredientsCombo =
-                        drink[drinkIngredient] + " - " + drink[drinkMeasure];
-                    if (
-                        drink[drinkMeasure] === null ||
-                        drink[drinkMeasure] === ""
-                    ) {
-                        ingredientsCombo = drink[drinkIngredient];
-                    }
-                    $("#drink-ingredients-content").append(
-                        $("<ul></ul>").append(
-                            $("<li></li>")
-                                .append("<p></p>")
-                                .text(ingredientsCombo)
-                        )
-                    );
-                }
-            }
+            fetchDrink(data);
         });
+}
+
+function fetchMeal(data) {
+    var meal = data.meals[0];
+
+    $("#meal-img").attr("src", meal.strMealThumb);
+    $("#meal-title").text(meal.strMeal);
+    $("#meal-instructions-content").append(
+        $("<p></p>").text(meal.strInstructions)
+    );
+
+    for (let i = 1; i < 21; i++) {
+        const mealIngredient = "strIngredient" + i;
+        const mealMeasure = "strMeasure" + i;
+        if ((meal[mealIngredient] !== null || meal[mealMeasure]) !== null) {
+            var ingredientsCombo =
+                meal[mealIngredient] + " - " + meal[mealMeasure];
+            if (meal[mealIngredient] !== "" && meal[mealMeasure] === "") {
+                ingredientsCombo = meal[mealIngredient];
+            } else if (meal[mealIngredient] === "") {
+                return;
+            }
+            $("#meal-ingredients-content").append(
+                $("<ul></ul>").append(
+                    $("<li></li>").append("<p></p>").text(ingredientsCombo)
+                )
+            );
+        }
+    }
+}
+
+function fetchDrink(data) {
+    var drink = data.drinks[0];
+
+    $("#drink-img").attr("src", drink.strDrinkThumb);
+    $("#drink-title").text(drink.strDrink);
+    $("#drink-instructions-content").append(
+        $("<p></p>").text(drink.strInstructions)
+    );
+    for (let i = 1; i < 16; i++) {
+        const drinkIngredient = "strIngredient" + i;
+        const drinkMeasure = "strMeasure" + i;
+        if ((drink[drinkIngredient] !== null || drink[drinkMeasure]) !== null) {
+            var ingredientsCombo =
+                drink[drinkIngredient] + " - " + drink[drinkMeasure];
+            if (
+                (drink[drinkIngredient] !== null &&
+                    drink[drinkMeasure] === null) ||
+                (drink[drinkIngredient] !== null && drink[drinkMeasure] === "")
+            ) {
+                ingredientsCombo = drink[drinkIngredient];
+            } else if (
+                drink[drinkIngredient] === null &&
+                drink[drinkMeasure] === ""
+            ) {
+                return;
+            }
+            $("#drink-ingredients-content").append(
+                $("<ul></ul>").append(
+                    $("<li></li>").append("<p></p>").text(ingredientsCombo)
+                )
+            );
+        }
+    }
 }

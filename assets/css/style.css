@@ -36,6 +36,7 @@ footer {
 }
 
 #saved-recipes {
+    font-size: 1rem;
     margin-top: 10px;
     margin-right: 25px;
     border-radius: 30px;
