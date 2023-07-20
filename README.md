@@ -44,8 +44,6 @@ and open the project in VS Code.
 5. Grabbing checked checkboxes using JQuery https://stackoverflow.com/questions/5450104/using-jquery-to-get-all-checked-checkboxes-with-a-certain-class-name
 6. Data-id Attribute https://stackoverflow.com/questions/5309926/how-can-i-get-the-data-id-attribute
 
--- -- add more -- --
-
 ## License
 
 MIT License
