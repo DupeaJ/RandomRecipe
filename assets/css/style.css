@@ -1,7 +1,7 @@
 * {
     font-family: "Advent Pro", sans-serif;
     scroll-behavior: smooth;
-    cursor: url("/assets/images/pizza.cur"), pointer;
+    cursor: url("../images/pizza.cur"), auto;
 }
 
 nav {
@@ -41,7 +41,7 @@ footer {
     border-radius: 30px;
     background-color: #1e1e2e;
     color: #cdd6f4;
-    cursor: url("/assets/images/pizza.cur"), pointer;
+    cursor: url("../images/pizza.cur"), auto;
 }
 
 #prev-recipes {
@@ -68,7 +68,7 @@ footer {
 #accordion-title-label {
     font-size: 20px;
     color: #aaa;
-    cursor: url("/assets/images/pizza.cur"), pointer;
+    cursor: url("../images/pizza.cur"), auto;
 }
 
 #card-group {
@@ -98,7 +98,7 @@ footer {
     margin-bottom: 0;
     border-radius: 30px;
     color: white;
-    cursor: url("/assets/images/pizza.cur"), pointer;
+    cursor: url("../images/pizza.cur"), auto;
 }
 
 #menu-button {
@@ -111,7 +111,7 @@ footer {
     margin: 0;
     background-color: #11111b;
     color: #cdd6f4;
-    cursor: url("/assets/images/pizza.cur"), pointer;
+    cursor: url("../images/pizza.cur"), auto;
 }
 
 #checkbox-dropdown {
@@ -120,7 +120,7 @@ footer {
 
 #checkbox-dropdown label {
     font-size: 1rem;
-    cursor: url("/assets/images/pizza.cur"), pointer;
+    cursor: url("../images/pizza.cur"), auto;
     -webkit-user-select: none;
     -moz-user-select: none;
     user-select: none;
