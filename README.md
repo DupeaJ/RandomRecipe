@@ -1,4 +1,5 @@
-# <h1 align="center">RandomRecipe.com</h1>
+# <h1 align="center">🎲 RandomRecipe.com 🎲</h1>
+
 
 ## Description
 
