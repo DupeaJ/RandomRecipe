@@ -10,8 +10,6 @@ This web app is a single page application powered by JavaScript that uses two AP
 
 -   Challenges: Our biggest challenge was conceptualizing the user experience. We had so many ideas for features to bring complexity to the UX. Since we were limited on time, we had to narrow down to just a few to start with, and build from there.
 
--   Key Learnings:
-
 ## Table of Contents
 
 -   [Installation](#installation)
@@ -34,13 +32,7 @@ and open the project in VS Code.
 <p>Next click save recipes in the top left to store your recipes</p>
 <p>Lastly click the top left dice to view past recipes</p>
 
-
-## Photos
-
-  <img src="assets/images/RandomRecipeLandingPage.PNG" alt="WebPage Landing screen" width="75%" height="75%">
-  <img src="assets/images/RandomRecipeCategories.PNG" alt="WebPage Categories" width="75%" height="75%">
-  <img src="assets/images/RandomRecipeDisplayCards.PNG" alt="WebPage Display cards with recipes" width="75%" height="75%">
-  <img src="assets/images/RandomRecipeSavedRecipes.PNG" alt="WebPage With saved Recipes" width="75%" height="75%">
+![screenshot preview](assets/images/screenshot.gif)
 
 ## Credits
 
@@ -57,7 +49,7 @@ and open the project in VS Code.
 
 MIT License
 
-Copyright (c) 2023 Sophia Williams
+Copyright (c) 2023 CU Bootcamp Group 2
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
