@@ -1,7 +1,7 @@
 $(function () {
     $(document).foundation();
 
-    $("#home-button").text("RandomRecipe.com");
+    $("#home-button").text("RaRe.com");
 
     $("#menu-button").on("click", function () {
         $("#side-nav").attr("style", "width: 250px");
